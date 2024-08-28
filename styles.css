@@ -1,0 +1,48 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 50%;
+}
+
+.axis {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#axes1 {
+    border-color: red;
+}
+
+#axes2 {
+    border-color: blue;
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
