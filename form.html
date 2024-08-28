@@ -12,10 +12,10 @@
 </head>
 <body>
     <div id="tally">Injuries: 0</div>
-    <button onclick="location.href='form.html'">Add Injury</button>
+    <button onclick="location.href='submit.html'">Add Injury</button>
     <script>
         async function fetchTally() {
-            const response = await fetch('AKfycbzLoHm7R3TAb_8zGjEhz6t-6RNhhkRGVXSDNWiphiA'); // Replace with your API endpoint
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxHJK4-6zcipJIbOziIj3xcdQJaLL3I609m-z8ob75H6hWY-sA-wAvA-9ulfcvfnJiR/exec'); // Replace with your Google Apps Script URL
             const data = await response.json();
             document.getElementById('tally').textContent = `Injuries: ${data.count}`;
         }
