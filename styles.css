@@ -6,7 +6,6 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,34 +14,35 @@ body {
 }
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
-    height: 50%;
+    position: relative;
+    width: 500px;
+    height: 500px;
 }
 
 .axis {
-    position: relative;
-    width: 200px;
-    height: 300px;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: white;
-}
-
-#axes1 {
-    border-color: red;
-}
-
-#axes2 {
-    border-color: blue;
-}
-
-.label {
     position: absolute;
+    background-color: black;
+}
+
+.x-axis {
+    width: 100%;
+    height: 2px;
     top: 50%;
+    left: 0;
+}
+
+.y-axis {
+    width: 2px;
+    height: 100%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: bold;
+}
+
+.draggable {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: pink;
+    border-radius: 50%;
+    cursor: grab;
 }
