@@ -57,4 +57,24 @@ body {
     background-color: pink;
     border-radius: 50%;
     cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.dot-amy{
+    background-color: #fad7a0 ;
+}
+.dot-jamie{
+    background-color:  #f1948a ;
+}
+.dot-lucas{
+    background-color:  #7dcea0  ;
+}
+.dot-sophie{
+    background-color:  #aed6f1 ;
+}
+.dot-steph{
+    background-color:  #566573 ;
+}
+.dot-yufei{
+    background-color:  #d2b4de  ;
 }

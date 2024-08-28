@@ -73,12 +73,12 @@
 
 // Make the DIV element draggable:
 
-dragElement(document.getElementById("dot-1"));
-dragElement(document.getElementById("dot-2"));
-dragElement(document.getElementById("dot-3"));
-dragElement(document.getElementById("dot-4"));
-dragElement(document.getElementById("dot-5"));
-dragElement(document.getElementById("dot-6"));
+dragElement(document.getElementById("dot-amy"));
+dragElement(document.getElementById("dot-jamie"));
+dragElement(document.getElementById("dot-lucas"));
+dragElement(document.getElementById("dot-sophie"));
+dragElement(document.getElementById("dot-steph"));
+dragElement(document.getElementById("dot-yufei"));
 
 
 function dragElement(elmnt) {
