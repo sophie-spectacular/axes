@@ -4,71 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axes: Injuredness vs. Brainrottedness</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .chart-container {
-            position: relative;
-            width: 500px;
-            height: 500px;
-            padding: 50px;
-        }
-
-        .axis {
-            position: absolute;
-            background-color: black;
-        }
-
-        .x-axis {
-            height: 2px;
-            width: calc(100% - 100px);
-            bottom: 50%;
-            left: 50px;
-        }
-
-        .y-axis {
-            width: 2px;
-            height: calc(100% - 100px);
-            top: 50px;
-            left: 50%;
-        }
-
-        .label {
-            position: absolute;
-            font-weight: bold;
-        }
-
-        .x-label {
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .y-label {
-            top: 50%;
-            left: -10px;
-            transform: translateY(-50%) rotate(-90deg);
-        }
-
-        .draggable-dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: pink;
-            border-radius: 50%;
-            cursor: pointer;
-            left: 50%; /* Start at center */
-            top: 50%;  /* Start at center */
-            transform: translate(-50%, -50%);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="chart-container">
@@ -76,42 +12,20 @@
         <div class="axis y-axis"></div>
         <div class="label x-label">Injuredness</div>
         <div class="label y-label">Brainrottedness</div>
-        <div class="draggable-dot"></div>
+        <!-- Create multiple draggable dots -->
+        <div id="dot-1" class="draggable-dot" style="left: 50%; top: 50%;">Amy</div>
+        <div id="dot-2" class="draggable-dot" style="left: 60%; top: 60%;">Jamie</div>
+        <div id="dot-3" class="draggable-dot" style="left: 70%; top: 70%;">Lucas</div>
+        <div id="dot-4" class="draggable-dot" style="left: 40%; top: 40%;">Sophie</div>
+        <div id="dot-5" class="draggable-dot" style="left: 30%; top: 30%;">Steph</div>
+        <div id="dot-6" class="draggable-dot" style="left: 20%; top: 20%;">Yufei</div>
     </div>
 
-    <script>
-        const dot = document.querySelector('.draggable-dot');
-        const container = document.querySelector('.chart-container');
-
-        let isDragging = false;
-
-        dot.addEventListener('mousedown', function(e) {
-            isDragging = true;
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-        });
-
-        function onMouseMove(e) {
-            if (!isDragging) return;
-
-            const rect = container.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            // Boundaries check to keep the dot within the container
-            const dotSize = 20;
-            const xPos = Math.max(dotSize / 2, Math.min(x, rect.width - dotSize / 2));
-            const yPos = Math.max(dotSize / 2, Math.min(y, rect.height - dotSize / 2));
-
-            dot.style.left = `${xPos}px`;
-            dot.style.top = `${yPos}px`;
-        }
-
-        function onMouseUp() {
-            isDragging = false;
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-        }
-    </script>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
