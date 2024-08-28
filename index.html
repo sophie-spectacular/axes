@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orthogonal Axes</title>
+    <title>Axes: Injuredness vs. Brainrottedness</title>
     <style>
         body {
             display: flex;
@@ -11,56 +11,107 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
-        .container {
+
+        .chart-container {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
+            padding: 50px;
         }
+
         .axis {
             position: absolute;
             background-color: black;
         }
+
         .x-axis {
-            width: 100%;
             height: 2px;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
+            width: calc(100% - 100px);
+            bottom: 50%;
+            left: 50px;
         }
+
         .y-axis {
-            height: 100%;
             width: 2px;
+            height: calc(100% - 100px);
+            top: 50px;
             left: 50%;
-            top: 0;
-            transform: translateX(-50%);
         }
+
         .label {
             position: absolute;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            color: black;
+            font-weight: bold;
         }
+
         .x-label {
-            bottom: -30px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
         }
+
         .y-label {
             top: 50%;
-            left: -40px;
+            left: -10px;
             transform: translateY(-50%) rotate(-90deg);
-            transform-origin: left center;
+        }
+
+        .draggable-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: pink;
+            border-radius: 50%;
+            cursor: pointer;
+            left: 50%; /* Start at center */
+            top: 50%;  /* Start at center */
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="chart-container">
         <div class="axis x-axis"></div>
         <div class="axis y-axis"></div>
-        <div class="label x-label">X Axis</div>
-        <div class="label y-label">Y Axis</div>
+        <div class="label x-label">Injuredness</div>
+        <div class="label y-label">Brainrottedness</div>
+        <div class="draggable-dot"></div>
     </div>
+
+    <script>
+        const dot = document.querySelector('.draggable-dot');
+        const container = document.querySelector('.chart-container');
+
+        let isDragging = false;
+
+        dot.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        });
+
+        function onMouseMove(e) {
+            if (!isDragging) return;
+
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Boundaries check to keep the dot within the container
+            const dotSize = 20;
+            const xPos = Math.max(dotSize / 2, Math.min(x, rect.width - dotSize / 2));
+            const yPos = Math.max(dotSize / 2, Math.min(y, rect.height - dotSize / 2));
+
+            dot.style.left = `${xPos}px`;
+            dot.style.top = `${yPos}px`;
+        }
+
+        function onMouseUp() {
+            isDragging = false;
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
+    </script>
 </body>
 </html>
