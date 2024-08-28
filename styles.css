@@ -39,15 +39,15 @@ body {
 }
 
 .x-label {
-    bottom: 30px;
+    bottom: 550px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .y-label {
     top: 50%;
-    left: -30px;
-    transform: translateY(-50%) rotate(-90deg);
+    left: 500px;
+    transform: translateY(-50%) rotate(90deg);
 }
 
 .draggable-dot {
