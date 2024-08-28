@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Injury</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        form { display: inline-block; }
+        input, button { padding: 10px; font-size: 1em; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Add Injury</h1>
+    <form id="injuryForm" action="https://formspree.io/f/myzgodrp" method="POST">
+        <input type="password" id="passcode" name="passcode" placeholder="Enter passcode" required>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById('injuryForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const passcode = document.getElementById('passcode').value;
+            const validPasscode = 'yippee';
+            
+            if (passcode === validPasscode) {
+                // Send form data to Formspree
+                const form = document.getElementById('injuryForm');
+                const formData = new FormData(form);
+
+                // Send POST request to Formspree
+                await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                // Update tally (this part would require an external service)
+                // Example URL - Replace with your own service or API endpoint
+                await fetch('YOUR_API_ENDPOINT', {
+                    method: 'POST',
+                    body: JSON.stringify({ passcode }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                alert('Injury added successfully!');
+                window.location.href = 'form.html'; // Redirect back to the tally page
+            } else {
+                alert('Invalid passcode');
+            }
+        });
+    </script>
+</body>
+</html>
