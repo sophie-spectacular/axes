@@ -16,7 +16,7 @@
     <script>
         async function fetchTally() {
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwHMDkVcfX-kE826a5l8bYQEadw_UOM9uiZuYYFrNcBa0XPwdXpSjBHwW9vRAf-H9Y/exec'); // Replace with your Google Apps Script URL
+                const response = await fetch('https://script.google.com/macros/s/AKfycbymLC3z-A6-vCF6bea-7fE_Ha2Mq4UUCZ3F3y1PPm2WSna6KN7xCNMuOpGS1slg3Ruk/exec); // Replace with your Google Apps Script URL');
                 const data = await response.json();
                 document.getElementById('tally').textContent = `Injuries: ${data.count}`;
             } catch (error) {
